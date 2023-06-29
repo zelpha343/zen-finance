@@ -7,10 +7,16 @@
 	export let day = 28;
 	export let month = 'June';
 	export let year = 2023;
+
+	export let selectMode;
+
+	let selected = false;
+	console.log(selected);
 </script>
 
 <div
 	class="flex w-[80%] space-x-2 shadow-2xl bg-slate-950 h-min p-3 rounded-sm justify-around hover:scale-105 hover:border-pink-400 hover:border-2 select-none"
+	style={`opacity: ${selected ? 75 : 100}%`}
 >
 	<span class="overflow-hidden whitespace-nowrap overflow-ellipsis truncate w-[45%] text-pink-600"
 		>{logDescription}</span
@@ -26,4 +32,7 @@
 	{/if}
 	<span class="text-gray-600 w-[15%]">{dayName}</span>
 	<span class="text-gray-600 w-[15%]">{day} {month} {year}</span>
+	{#if selectMode}
+		<input type="checkbox" bind:checked={selected} on:change={console.log(selected)} />
+	{/if}
 </div>
